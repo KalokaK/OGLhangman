@@ -17,17 +17,17 @@ namespace helpers {
 }
 
 namespace input {
-    void setupGlfwInputCallbacks(GLFWwindow *window) {
-        // close window key binds //
-        glfwSetKeyCallback(window, keypressCallback);
+    void setupGlfwInputCallbacks(GLFWwindow *window, inputHandler handler) {
+        // keypressCallback //
+        glfwSetKeyCallback(window, input::inputHandler::keypressCallback);
+        // //
+
+        // textCallback //
+        glfwSetCharCallback(window, input::inputHandler::characterCallback);
         // //
     }
 
-    void closeWindowCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
-        glfwSetWindowShouldClose(window, true);
-    }
-
-    void keypressCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+    void inputHandler::keypressCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
         switch (key) {
             case GLFW_KEY_END:
                 switch (action) {
@@ -41,5 +41,25 @@ namespace input {
             default:
                 ;
         }
+    }
+
+    void inputHandler::characterCallback(GLFWwindow *window, unsigned int codepoint) {
+        if (65 <= codepoint && codepoint <= 90) {
+            processGenericCharacter(codepoint);
+        } else if (97 <= codepoint && codepoint <= 122) {
+            processGenericCharacter(codepoint - 32);
+        } else if (codepoint == 32) {
+            processGenericCharacter(32);
+        }
+    }
+
+    inputHandler::inputHandler() = default;
+
+    void inputHandler::closeWindowCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+        glfwSetWindowShouldClose(window, true);
+    }
+
+    void inputHandler::processGenericCharacter(unsigned int codepoint) {
+
     }
 }

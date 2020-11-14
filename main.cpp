@@ -26,7 +26,7 @@ int main() {
     // //
 
     // setup input //
-    input::setupGlfwInputCallbacks(window);
+    input::setupGlfwInputCallbacks(window, input::inputHandler());
     // //
 
     // set viewport rect //
