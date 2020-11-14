@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.16)
 project(OGLhangman)
 
 find_package(OpenGL REQUIRED)
