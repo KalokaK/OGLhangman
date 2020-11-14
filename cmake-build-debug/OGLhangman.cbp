@@ -283,6 +283,12 @@
 		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/glad.c">
 			<Option target="OGLhangman"/>
 		</Unit>
+		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/helpers.cpp">
+			<Option target="OGLhangman"/>
+		</Unit>
+		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/helpers.h">
+			<Option target="OGLhangman"/>
+		</Unit>
 		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

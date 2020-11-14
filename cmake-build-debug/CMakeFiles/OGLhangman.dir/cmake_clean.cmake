@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/OGLhangman.dir/main.cpp.o"
   "CMakeFiles/OGLhangman.dir/src/glad.c.o"
+  "CMakeFiles/OGLhangman.dir/src/helpers.cpp.o"
   "OGLhangman"
   "OGLhangman.pdb"
 )

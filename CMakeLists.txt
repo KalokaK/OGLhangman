@@ -11,7 +11,7 @@ include_directories(src)
 
 set(SOURCE_FILES
         main.cpp
-        src/glad.c)
+        src/glad.c src/helpers.cpp src/helpers.h)
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
 
 # Linking GLFW and OGL
