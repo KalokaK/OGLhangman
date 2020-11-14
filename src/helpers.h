@@ -16,4 +16,14 @@ namespace input {
     void closeWindowCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
     void keypressCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
 }
+
+namespace shaders
+{
+    const char* vertshader = "vertshader.vert";
+    const char* fragshader = "fragshader.frag";
+
+    unsigned int load_shader(const char* filename);
+}
+
+
 #endif //OGLHANGMAN_HELPERS_H

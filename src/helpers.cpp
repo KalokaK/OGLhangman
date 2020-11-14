@@ -4,6 +4,7 @@
 
 #include <glad/glad.h>
 #include "helpers.h"
+#include <fstream>
 
 namespace helpers {
     void framebufferSizeCallback(GLFWwindow *glfwWindow, int width, int height) {
@@ -45,9 +46,41 @@ namespace input {
 }
 
 namespace shaders
-{
-    const char* vertshader = "vertshader.vert";
-    const char* fragshader = "fragshader.frag";
+{ 
+    unsigned int load_shader(const char* filename, int shadertype)
+    {
+        std::ifstream file(filename);
 
-    unsigned int load_shader(const char* filename);
+        file.seekg(0, file.end);
+
+        int len = file.tellg();
+
+        file.seekg(file.beg);
+
+        char* code = new char[len];
+
+        file.read(code, len);
+
+        unsigned int out = glCreateShader(shadertype);
+
+        glShaderSource(out, 1, &code, NULL):
+
+        glCompileShader(out);
+
+        file.close();
+        delete[] code;
+        
+        int  success;
+        glGetShaderiv(out, GL_COMPILE_STATUS, &success);
+        if(!success)
+        {
+            char infoLog[512];
+            glGetShaderInfoLog(out, 512, NULL, infoLog);
+            printf("compilation of  %s  failed\n", filename);
+            throw "shader compilation failed";
+        }
+
+        return out;
+
+    }
 }
