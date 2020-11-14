@@ -5,14 +5,6 @@
 
 int main() {
 
-    std::string a;
-
-    std::ifstream b("vertshader.vert");
-
-    b >> a;
-
-    printf(a.c_str());
-
     // create open gl context //
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
