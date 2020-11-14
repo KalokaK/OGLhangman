@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/OGLhangman.dir/main.cpp.o -o OGLhangman 
+/usr/bin/c++ -g CMakeFiles/OGLhangman.dir/main.cpp.o CMakeFiles/OGLhangman.dir/src/glad.c.o -o OGLhangman  lib/glfw/src/libglfw3.a /usr/lib/libOpenGL.so /usr/lib/libGLX.so /usr/lib/libGLU.so -lpthread /usr/lib/librt.so -lm -ldl 
