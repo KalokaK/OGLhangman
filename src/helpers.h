@@ -19,10 +19,8 @@ namespace input {
 
 namespace shaders
 {
-    const char* vertshader = "vertshader.vert";
-    const char* fragshader = "fragshader.frag";
 
-    unsigned int load_shader(const char* filename);
+    unsigned int load_shader(const char* filename, int shadertype);
 }
 
 
