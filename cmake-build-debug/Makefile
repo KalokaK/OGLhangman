@@ -268,6 +268,33 @@ src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/glad.c.s
 .PHONY : src/glad.c.s
 
+src/helpers.o: src/helpers.cpp.o
+
+.PHONY : src/helpers.o
+
+# target to build an object file
+src/helpers.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/helpers.cpp.o
+.PHONY : src/helpers.cpp.o
+
+src/helpers.i: src/helpers.cpp.i
+
+.PHONY : src/helpers.i
+
+# target to preprocess a source file
+src/helpers.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/helpers.cpp.i
+.PHONY : src/helpers.cpp.i
+
+src/helpers.s: src/helpers.cpp.s
+
+.PHONY : src/helpers.s
+
+# target to generate assembly for a file
+src/helpers.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/helpers.cpp.s
+.PHONY : src/helpers.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -289,6 +316,9 @@ help:
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
+	@echo "... src/helpers.o"
+	@echo "... src/helpers.i"
+	@echo "... src/helpers.s"
 .PHONY : help
 
 
