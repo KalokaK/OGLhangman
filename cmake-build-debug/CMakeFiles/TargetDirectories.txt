@@ -1,0 +1,3 @@
+/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles/OGLhangman.dir
