@@ -1,6 +1,9 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/kaloka/CLionProjects/OGLhangman
--- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
--- Using X11 for window creation
--- Configuring done
--- Generating done
--- Build files have been written to: /home/kaloka/CLionProjects/OGLhangman/cmake-build-debug
+CMake Error at CMakeLists.txt:8 (add_subdirectory):
+  add_subdirectory given source "lib/glfw" which is not an existing
+  directory.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles/CMakeError.log".
