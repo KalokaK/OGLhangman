@@ -7,12 +7,15 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(lib/glfw)
 include_directories(include)
+add_subdirectory(test/Google_tests)
 include_directories(src)
 
 set(SOURCE_FILES
         main.cpp
         src/glad.c src/helpers.cpp src/helpers.h)
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
+
+target_include_directories(Google_Tests_run PRIVATE src)
 
 # Linking GLFW and OGL
 target_link_libraries(${CMAKE_PROJECT_NAME} glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARY})
