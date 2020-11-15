@@ -37,8 +37,8 @@ namespace events {
             funcCallback(args...);
         }
 
-        explicit operator long int() const override {
-            return (int)funcCallback;
+        explicit operator size_t () const override {
+            return (size_t)funcCallback;
         }
 
     private:
@@ -57,8 +57,8 @@ namespace events {
             inst->*memberCallback(args...);
         }
 
-        explicit operator long int() const override {
-            return (int)memberCallback;
+        explicit operator size_t () const override {
+            return (size_t)memberCallback;
         }
 
     private:
@@ -89,7 +89,7 @@ namespace events {
             auto i = handlers.begin();
             auto end = handlers.end(); // cuz we modify
             for (; i != end; i++) {
-                if ((int)**i == (int)*handler) {
+                if ((size_t)**i == (size_t)*handler) {
                     delete *i;
                     handlers.erase(i);
                     delete handler;
