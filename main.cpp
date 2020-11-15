@@ -1,8 +1,13 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "helpers.h"
+#include <fstream>
+
+const char* vertshader_loc = "vertshader.vert";
+const char* fragshader_loc = "fragshader.frag";
 
 int main() {
+
     // create open gl context //
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -24,6 +29,13 @@ int main() {
         throw "glad died something has gone wrong check dependencies";
     }
     // //
+
+    // shaders //
+    unsigned int vertshader = shaders::load_shader(vertshader_loc, GL_VERTEX_SHADER);
+    unsigned int fragshader = shaders::load_shader(fragshader_loc, GL_FRAGMENT_SHADER);
+    // //
+
+    printf("\nshader success!\n");
 
     // setup input //
     input::setupGlfwInputCallbacks(window);
