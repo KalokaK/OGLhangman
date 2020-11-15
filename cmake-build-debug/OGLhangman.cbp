@@ -5,7 +5,7 @@
 		<Option title="OGLhangman"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\lib\;CMake Files\lib\glfw\;CMake Files\lib\glfw\CMake\;CMake Files\lib\glfw\src\;CMake Files\test\;CMake Files\test\Google_tests\;CMake Files\test\Google_tests\lib\;CMake Files\test\Google_tests\lib\googlemock\;CMake Files\test\Google_tests\lib\googlemock\cmake\;CMake Files\test\Google_tests\lib\googletest\;CMake Files\test\Google_tests\lib\googletest\cmake\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\lib\;CMake Files\lib\glfw\;CMake Files\lib\glfw\CMake\;CMake Files\lib\glfw\src\;CMake Files\test\;CMake Files\test\Google_tests\;CMake Files\test\Google_tests\lib\;CMake Files\test\Google_tests\lib\googlemock\;CMake Files\test\Google_tests\lib\googlemock\cmake\;CMake Files\test\Google_tests\lib\googletest\;CMake Files\test\Google_tests\lib\googletest\cmake\;CMake Files\src\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug"/>
@@ -614,6 +614,12 @@
 		</Unit>
 		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/test/Google_tests/lib/googletest/cmake/internal_utils.cmake">
 			<Option virtualFolder="CMake Files\test\Google_tests\lib\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/fragshader.frag">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/vertshader.vert">
+			<Option virtualFolder="CMake Files\src\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
