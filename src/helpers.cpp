@@ -46,7 +46,7 @@ namespace input {
 }
 
 namespace shaders
-{ 
+{
     unsigned int load_shader(const char* filename, int shadertype)
     {
         std::ifstream file(filename, std::ios::in | std::ios::binary);
@@ -64,7 +64,7 @@ namespace shaders
         code[len] = '\0';
 
         unsigned int out = glCreateShader(shadertype);
-        
+
         glShaderSource(out, 1, &code, NULL);
 
         glCompileShader(out);
