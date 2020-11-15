@@ -47,6 +47,7 @@ namespace input {
 
 namespace shaders
 { 
+
     unsigned int load_shader(const char* filename, int shadertype)
     {
         std::ifstream file(filename, std::ios::in | std::ios::binary);
@@ -75,7 +76,6 @@ namespace shaders
         // printf("\n");
 
         file.close();
-        delete[] code;
 
         int  success;
         glGetShaderiv(out, GL_COMPILE_STATUS, &success);
@@ -83,11 +83,41 @@ namespace shaders
         {
             char infoLog[512];
             glGetShaderInfoLog(out, 512, NULL, infoLog);
-            printf("compilation of  %s  failed\n%s\n", filename, infoLog);
+            printf("compilation of  %s  failed\n%s\n\n%s\n", filename, infoLog, code);
+            delete[] code;
             throw "shader compilation failed";
+        }
+        delete[] code;
+
+        return out;
+    }
+
+
+    unsigned int shader_program()
+    {
+        unsigned int shader[2];
+
+        unsigned int out = glCreateProgram();
+        shader[0] = load_shader(vertshader_loc, GL_VERTEX_SHADER);
+        glAttachShader(out, shader[0]);
+        shader[1] = load_shader(fragshader_loc, GL_FRAGMENT_SHADER);
+        glAttachShader(out, shader[1]);
+        glLinkProgram(out);
+
+        glDeleteShader(shader[0]);
+        glDeleteShader(shader[1]);
+
+        int success;
+        glGetProgramiv(out, GL_LINK_STATUS, &success);
+
+        if(!success) {
+            char infoLog[512];
+            glGetProgramInfoLog(out, 512, NULL, infoLog);
+            printf("shaderporgramm linking didn't work: %s\n", infoLog);
+            throw "ShaderPorgram didn't work";
         }
 
         return out;
-
     }
+
 }
