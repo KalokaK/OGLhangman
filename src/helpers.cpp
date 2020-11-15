@@ -5,6 +5,7 @@
 #include <glad/glad.h>
 #include "helpers.h"
 #include <fstream>
+#include "functional"
 
 namespace helpers {
     void framebufferSizeCallback(GLFWwindow *glfwWindow, int width, int height) {
@@ -30,14 +31,25 @@ namespace input {
 
     void inputHandler::keypressCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
         switch (key) {
+            case GLFW_KEY_UP:
+                inputActionEventsHolder::move4Axis(0., 1.);
+                break;
+            case GLFW_KEY_DOWN:
+                inputActionEventsHolder::move4Axis(0., -1.);
+                break;
+            case GLFW_KEY_RIGHT:
+                inputActionEventsHolder::move4Axis(1., 0.);
+                break;
+            case GLFW_KEY_LEFT:
+                inputActionEventsHolder::move4Axis(-1., 0.);
+                break;
+            case GLFW_KEY_ENTER:
+                inputActionEventsHolder::accept();
+                break;
+            case GLFW_KEY_HOME:
+                inputActionEventsHolder::reload();
             case GLFW_KEY_END:
-                switch (action) {
-                    case GLFW_PRESS:
-                        closeWindowCallback(window, key, scancode, action, mods);
-                        break;
-                    default:
-                        ;
-                }
+                closeWindowCallback(window, key, scancode, action, mods);
                 break;
             default:
                 ;
@@ -54,14 +66,18 @@ namespace input {
         }
     }
 
-    inputHandler::inputHandler() = default;
+    inputHandler::inputHandler()
+    {
+        inputActionEvents = inputActionEventsHolder();
+
+    };
 
     void inputHandler::closeWindowCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
         glfwSetWindowShouldClose(window, true);
     }
 
     void inputHandler::processGenericCharacter(unsigned int codepoint) {
-
+        inputActionEventsHolder::genericCharacterEvent((char) codepoint);
     }
 }
 
