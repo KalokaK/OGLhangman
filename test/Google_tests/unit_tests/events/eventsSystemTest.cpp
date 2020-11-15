@@ -43,3 +43,14 @@ TEST(eventSystemTest, multiArgEvent) {
     (*event1)(10, 20.);
     delete event1;
 }
+
+void foo() { printf("hello void event\n"); }
+TEST(eventSystemTest, noArgEvent) {
+    auto event1 = events::event<void>();
+    event1();
+    event1 += events::handler(foo);
+    event1();
+    event1 -= foo;
+    event1();
+    foo();
+}
