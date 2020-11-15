@@ -1,6 +1,7 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/kaloka/CLionProjects/OGLhangman
 -- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
 -- Using X11 for window creation
+-- Found PythonInterp: /usr/bin/python (found version "3.8.6") 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/kaloka/CLionProjects/OGLhangman/cmake-build-debug
