@@ -5,6 +5,7 @@
 #include <glad/glad.h>
 #include "helpers.h"
 #include <fstream>
+#include "calibri.c"
 
 namespace helpers {
     void framebufferSizeCallback(GLFWwindow *glfwWindow, int width, int height) {
@@ -121,3 +122,53 @@ namespace shaders
     }
 
 }
+
+
+namespace sprites
+{
+
+    unsigned int Text::textids[100];
+
+    void Text::TextInit()
+    {
+        glGenTextures(100, textids);
+        for (int i = 0; i < 100; i++)
+        {
+            glBindTexture(GL_TEXTURE_2D, textids[i]);  
+
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, CALIBRI_FRAME_WIDTH, CALIBRI_FRAME_HEIGHT, 0, GL_RGBA_INTEGER, GL_UNSIGNED_BYTE, calibri_data[i]);
+            glGenerateMipmap(GL_TEXTURE_2D);
+        }
+    }
+
+    Text::Text(std::string text, int posx, int posy)
+    {
+
+    }
+
+    void Text::setText(std::string newtext)
+    {
+        text = newtext;
+    }
+
+    std::string Text::getText()
+    {
+        return text;
+    }
+
+    void Text::draw()
+    {
+        const char* cars = text.c_str();
+
+        for (int i = 0; i < text.size(); i++)
+        {
+            
+        }
+    }
+
+};

@@ -6,6 +6,7 @@
 #define OGLHANGMAN_HELPERS_H
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <string>
 namespace helpers {
     void framebufferSizeCallback(GLFWwindow *glfwWindow, int width, int height);
     void render();
@@ -25,6 +26,40 @@ namespace shaders
     unsigned int load_shader(const char* filename, int shadertype);
     unsigned int shader_program();
 }
+
+namespace sprites
+{
+    class Sprite
+    {
+    public:
+        float x;
+        float y;
+        float w;
+        float h;
+
+        virtual void draw() = 0;
+    };
+
+    class Text: public Sprite
+    {
+    public:
+
+        static unsigned int textids[100];
+
+        static void TextInit();
+
+        Text(std::string text, int posx = 0, int posy = 0);
+        void setText(std::string newtext);
+        std::string getText();
+
+        void draw();
+
+    private:
+        std::string text = "";
+
+    };
+
+};
 
 
 #endif //OGLHANGMAN_HELPERS_H
