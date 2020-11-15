@@ -33,6 +33,8 @@ int main() {
     glViewport(0, 0, 800, 600);
     glfwSetFramebufferSizeCallback(window, helpers::framebufferSizeCallback);
     // //
+    auto * event = new events::event<GLFWwindow *, int, int>();
+    *event += events::handler(helpers::framebufferSizeCallback);
 
     // main game loop //
     while(!glfwWindowShouldClose(window))
