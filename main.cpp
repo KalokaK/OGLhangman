@@ -3,7 +3,9 @@
 #include "helpers.h"
 #include <fstream>
 
-int main() {
+int main(int argc, char* argv[]) {
+
+    printf(argv[0]);
 
     // create open gl context //
     glfwInit();
