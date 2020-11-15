@@ -23,11 +23,11 @@ namespace events {
     class functionWrapperBase {
     public:
         virtual void call(T ...args) = 0;
-        virtual explicit operator long int () const = 0;
+        virtual bool operator == (functionWrapperBase<T...>* other) = 0;
     };
 
     template <typename ...T>
-    class functionWrapperFunc : functionWrapperBase<T...> {
+    class functionWrapperFunc : public functionWrapperBase<T...> {
     public:
         explicit functionWrapperFunc(void (*func)(T...)) :
         funcCallback(func)
@@ -37,8 +37,12 @@ namespace events {
             funcCallback(args...);
         }
 
-        explicit operator size_t () const override {
-            return (size_t)funcCallback;
+        bool operator == (functionWrapperBase<T...>* other) override {
+            if (typeid(*this) != typeid(*other)) {
+                return false;
+            } else if (funcCallback != (dynamic_cast<functionWrapperFunc<T...> *>(other)->funcCallback)) {
+                return false;
+            } else { return true; }
         }
 
     private:
@@ -46,7 +50,7 @@ namespace events {
     };
 
     template <typename U, typename ...T>
-    class functionWrapperMember : functionWrapperBase<T...> {
+    class functionWrapperMember : public functionWrapperBase<T...> {
     public:
         functionWrapperMember(void (U::*func)(T...), U *inst) :
         inst(inst),
@@ -54,11 +58,19 @@ namespace events {
         {}
 
         void call(T... args) override {
-            inst->*memberCallback(args...);
+            (inst->*memberCallback)(args...);
         }
 
-        explicit operator size_t () const override {
-            return (size_t)memberCallback;
+        bool operator == (functionWrapperBase<T...>* other) override {
+            if (typeid(*this) != typeid(*other)) {
+                return false;
+            } else {
+                auto castedOther = dynamic_cast<functionWrapperMember<U, T...> *>(other);
+                if (inst != castedOther->inst || memberCallback != castedOther->memberCallback) {
+                    return false;
+                }
+                return true;
+            }
         }
 
     private:
@@ -89,7 +101,7 @@ namespace events {
             auto i = handlers.begin();
             auto end = handlers.end(); // cuz we modify
             for (; i != end; i++) {
-                if ((size_t)**i == (size_t)*handler) {
+                if (**i == handler) {
                     delete *i;
                     handlers.erase(i);
                     delete handler;
@@ -104,6 +116,11 @@ namespace events {
                 handler->call(args...);
             }
         }
+        ~event(){
+            for (auto handler : handlers) {
+                delete handler;
+            }
+        }
 
     private:
         std::vector<functionWrapperBase<T...>*> handlers;
@@ -113,7 +130,6 @@ namespace events {
 
 namespace shaders
 {
-
     unsigned int load_shader(const char* filename, int shadertype);
 }
 
