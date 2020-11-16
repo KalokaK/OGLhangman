@@ -12,7 +12,8 @@ include_directories(src)
 
 set(SOURCE_FILES
         main.cpp
-        src/glad.c src/helpers.cpp src/helpers.h)
+        src/glad.c
+        src/helpers.cpp)
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
 
 target_include_directories(Google_Tests_run PRIVATE src)
@@ -25,5 +26,5 @@ set(WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}/src)
 
 
 # shaders 
-configure_file(src/vertshader.vert Debug/vertshader.vert COPYONLY)
-configure_file(src/fragshader.frag Debug/fragshader.frag COPYONLY)
+configure_file(src/vertshader.vert vertshader.vert COPYONLY)
+configure_file(src/fragshader.frag fragshader.frag COPYONLY)
