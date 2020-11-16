@@ -169,15 +169,15 @@ namespace sprites
 
     unsigned int Text::VBO, Text::VAO, Text::EBO;
 
-    unsigned int Text::textids[100];
+    unsigned int Text::textids[CALIBRI_FRAME_COUNT];
     bool Text::initflag = false;
 
     void Text::TextInit()
     {
         if (initflag) return;
 
-        glGenTextures(100, textids);
-        for (int i = 0; i < 100; i++)
+        glGenTextures(CALIBRI_FRAME_COUNT, textids);
+        for (int i = 0; i < CALIBRI_FRAME_COUNT; i++)
         {
             glBindTexture(GL_TEXTURE_2D, textids[i]);  
 

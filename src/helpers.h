@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <typeinfo>
+#include "calibri.c"
 
 namespace helpers {
     void framebufferSizeCallback(GLFWwindow *glfwWindow, int width, int height);
@@ -307,7 +308,7 @@ namespace sprites
     {
     public:
 
-        static unsigned int textids[100];
+        static unsigned int textids[CALIBRI_FRAME_COUNT];
         static bool initflag;
 
         static unsigned int VBO, VAO, EBO;
