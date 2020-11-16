@@ -6,6 +6,7 @@
 #include "helpers.h"
 #include <fstream>
 #include "calibri.c"
+#include "functional"
 
 namespace helpers {
     void framebufferSizeCallback(GLFWwindow *glfwWindow, int width, int height) {
@@ -19,36 +20,70 @@ namespace helpers {
 }
 
 namespace input {
-    void setupGlfwInputCallbacks(GLFWwindow *window) {
-        // close window key binds //
-        glfwSetKeyCallback(window, keypressCallback);
+    void setupGlfwInputCallbacks(GLFWwindow *window, inputHandler handler) {
+        // keypressCallback //
+        glfwSetKeyCallback(window, input::inputHandler::keypressCallback);
+        // //
+
+        // textCallback //
+        glfwSetCharCallback(window, input::inputHandler::characterCallback);
         // //
     }
 
-    void closeWindowCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
-        glfwSetWindowShouldClose(window, true);
-    }
-
-    void keypressCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+    void inputHandler::keypressCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
         switch (key) {
+            case GLFW_KEY_UP:
+                inputActionEventsHolder::move4Axis(0., 1.);
+                break;
+            case GLFW_KEY_DOWN:
+                inputActionEventsHolder::move4Axis(0., -1.);
+                break;
+            case GLFW_KEY_RIGHT:
+                inputActionEventsHolder::move4Axis(1., 0.);
+                break;
+            case GLFW_KEY_LEFT:
+                inputActionEventsHolder::move4Axis(-1., 0.);
+                break;
+            case GLFW_KEY_ENTER:
+                inputActionEventsHolder::accept();
+                break;
+            case GLFW_KEY_HOME:
+                inputActionEventsHolder::reload();
             case GLFW_KEY_END:
-                switch (action) {
-                    case GLFW_PRESS:
-                        closeWindowCallback(window, key, scancode, action, mods);
-                        break;
-                    default:
-                        ;
-                }
+                closeWindowCallback(window, key, scancode, action, mods);
                 break;
             default:
                 ;
         }
     }
+
+    void inputHandler::characterCallback(GLFWwindow *window, unsigned int codepoint) {
+        if (65 <= codepoint && codepoint <= 90) {
+            processGenericCharacter(codepoint);
+        } else if (97 <= codepoint && codepoint <= 122) {
+            processGenericCharacter(codepoint - 32);
+        } else if (codepoint == 32) {
+            processGenericCharacter(32);
+        }
+    }
+
+    inputHandler::inputHandler()
+    {
+        inputActionEvents = inputActionEventsHolder();
+
+    };
+
+    void inputHandler::closeWindowCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+        glfwSetWindowShouldClose(window, true);
+    }
+
+    void inputHandler::processGenericCharacter(unsigned int codepoint) {
+        inputActionEventsHolder::genericCharacterEvent((char) codepoint);
+    }
 }
 
 namespace shaders
-{ 
-
+{
     unsigned int load_shader(const char* filename, int shadertype)
     {
         std::ifstream file(filename, std::ios::in | std::ios::binary);
@@ -66,7 +101,7 @@ namespace shaders
         code[len] = '\0';
 
         unsigned int out = glCreateShader(shadertype);
-        
+
         glShaderSource(out, 1, &code, NULL);
 
         glCompileShader(out);

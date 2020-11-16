@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
     printf("\nshader success!\n");
 
     // setup input //
-    input::setupGlfwInputCallbacks(window);
+    input::setupGlfwInputCallbacks(window, input::inputHandler());
     // //
 
     // set viewport rect //
