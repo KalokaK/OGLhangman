@@ -127,7 +127,10 @@ namespace shaders
 namespace sprites
 {
 
+    unsigned int Text::VBO, Text::VAO, Text::EBO;
+
     unsigned int Text::textids[100];
+    bool Text::initflag = false;
 
     void Text::TextInit()
     {
@@ -144,16 +147,62 @@ namespace sprites
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, CALIBRI_FRAME_WIDTH, CALIBRI_FRAME_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, calibri_data[i]);
             //glGenerateMipmap(GL_TEXTURE_2D);
         }
+
+        unsigned int indices[] = {  // note that we start from 0!
+        0, 1, 3,   // first triangle
+        1, 2, 3    // second triangle
+        };  
+
+        glGenVertexArrays(1, &VAO);
+        glGenBuffers(1, &VBO);
+        glGenBuffers(1, &EBO);
+
+        glBindVertexArray(VAO);
+
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
+
+        // position attribute
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(0);
+        // color attribute
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+        glEnableVertexAttribArray(1);
+        // texture coord attribute
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+        glEnableVertexAttribArray(2);
+
+        initflag = true;
     }
 
-    Text::Text(std::string text, int posx, int posy)
+    Text::Text()
     {
+        if (!initflag) throw "Textsystem not initialized!";
+        x = 0;
+        y = 0;
 
+        w = text.size() * CALIBRI_FRAME_WIDTH;
+        h = CALIBRI_FRAME_HEIGHT;
+
+        text = "";
+    }
+
+    Text::Text(std::string text, int posx, int posy, float height): text(text)
+    {
+        if (!initflag) throw "Textsystem not initialized!";
+
+        h = height;
+        x = posx;
+        y = posy;
+        w = text.size() * h;
     }
 
     void Text::setText(std::string newtext)
     {
         text = newtext;
+        w = text.size() * h;
     }
 
     std::string Text::getText()
@@ -165,9 +214,30 @@ namespace sprites
     {
         const char* cars = text.c_str();
 
+        float vertices[] = {
+        // positions          // colors           // texture coords
+        x + h,  y + h, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // top right
+        x + h,      y, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
+            x,      y, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // bottom left
+            x,  y + h, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
+        };
+        
+        glBindVertexArray(VAO);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+
+
         for (int i = 0; i < text.size(); i++)
         {
-            
+            glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+            glBindTexture(GL_TEXTURE_2D, textids[cars[i]]);
+
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+            vertices[0] += h;
+            vertices[8] += h;
+            vertices[16] += h;
+            vertices[24] += h;
         }
     }
 

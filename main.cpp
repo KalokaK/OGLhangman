@@ -45,10 +45,10 @@ int main(int argc, char* argv[]) {
 
     float vertices[] = {
         // positions          // colors           // texture coords
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // top right
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // bottom left
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
+         0.25f,  0.25f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // top right
+         0.25f, -0.25f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
+        -0.25f, -0.25f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // bottom left
+        -0.25f,  0.25f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
     };
 
     unsigned int indices[] = {  // note that we start from 0!
@@ -100,26 +100,24 @@ unsigned int VBO, VAO, EBO;
     
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, texdat);
 
-
-
+    sprites::Text one("HELLO WORLD", -1, 0, 0.18);
 
     //glUniform1i(glGetUniformLocation(sprites::Text::textids[0], "text"), 0);
 
     int c = 0;
     double t = 0;
     // main game loop //
-    while(!glfwWindowShouldClose(window))
+    //while(!glfwWindowShouldClose(window))
+    for (int i = 0; i < 100;i++)
     {
+
+        if (i % 3 == 0) if (i % 5 == 0) one.setText("FIZZBUZZ"); else one.setText("FIZZ");
+        else if (i % 5 == 0) one.setText("BUZZ"); else one.setText(std::to_string(i));
+
         t = glfwGetTime() + 0.2;
         helpers::render();
-        c++;
-        c %= 100;
-        glBindTexture(GL_TEXTURE_2D, sprites::Text::textids[c]);
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        one.draw();
 
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-        glDrawArrays(GL_TRIANGLES, 0, 3);
         glfwSwapBuffers(window);
         glfwPollEvents();
 

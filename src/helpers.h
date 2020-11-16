@@ -45,10 +45,15 @@ namespace sprites
     public:
 
         static unsigned int textids[100];
+        static bool initflag;
+
+        static unsigned int VBO, VAO, EBO;
 
         static void TextInit();
+        
+        Text();
 
-        Text(std::string text, int posx = 0, int posy = 0);
+        Text(std::string text, int posx = 0, int posy = 0, float height = 0.05);
         void setText(std::string newtext);
         std::string getText();
 
