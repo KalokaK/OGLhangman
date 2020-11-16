@@ -20,42 +20,34 @@ namespace helpers {
 }
 
 namespace input {
-    void setupGlfwInputCallbacks(GLFWwindow *window, inputHandler handler) {
-        // keypressCallback //
-        glfwSetKeyCallback(window, input::inputHandler::keypressCallback);
-        // //
-
-        // textCallback //
-        glfwSetCharCallback(window, input::inputHandler::characterCallback);
-        // //
+    void setupGlfwInputCallbacks(GLFWwindow *window, inputHandler *handler) {
+        if (!inputHandler::glfwBound) {
+            glfwSetKeyCallback(window, inputHandler::keypressEventCaller);
+            glfwSetCharCallback(window, inputHandler::characterEventCaller);
+        }
     }
-
-        event<void> inputActionEventsHolder::accept;
-        event<float, float> inputActionEventsHolder::move4Axis;
-        event<void> inputActionEventsHolder::reload;
-        event<char>  inputActionEventsHolder::genericCharacterEvent;
 
     void inputHandler::keypressCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
         switch (key) {
             case GLFW_KEY_UP:
-                inputActionEventsHolder::move4Axis(0., 1.);
+                inputActionHolder.move4Axis(0., 1.);
                 break;
             case GLFW_KEY_DOWN:
-                inputActionEventsHolder::move4Axis(0., -1.);
+                inputActionHolder.move4Axis(0., -1.);
                 break;
             case GLFW_KEY_RIGHT:
-                inputActionEventsHolder::move4Axis(1., 0.);
+                inputActionHolder.move4Axis(1., 0.);
                 break;
             case GLFW_KEY_LEFT:
-                inputActionEventsHolder::move4Axis(-1., 0.);
+                inputActionHolder.move4Axis(-1., 0.);
                 break;
             case GLFW_KEY_ENTER:
-                inputActionEventsHolder::accept();
+                inputActionHolder.accept();
                 break;
             case GLFW_KEY_HOME:
-                inputActionEventsHolder::reload();
+                inputActionHolder.reload();
             case GLFW_KEY_END:
-                closeWindowCallback(window, key, scancode, action, mods);
+                inputActionHolder.close();
                 break;
             default:
                 ;
@@ -64,27 +56,57 @@ namespace input {
 
     void inputHandler::characterCallback(GLFWwindow *window, unsigned int codepoint) {
         if (65 <= codepoint && codepoint <= 90) {
-            processGenericCharacter(codepoint);
+            preprocessGenericCharacter(codepoint);
         } else if (97 <= codepoint && codepoint <= 122) {
-            processGenericCharacter(codepoint - 32);
+            preprocessGenericCharacter(codepoint - 32);
         } else if (codepoint == 32) {
-            processGenericCharacter(32);
+            preprocessGenericCharacter(32);
         }
     }
 
-    inputHandler::inputHandler()
-    {
-        inputActionEvents = inputActionEventsHolder();
-
+    inputHandler::inputHandler() :
+    inputActionHolder() {
+        inputHandler::keypressEvent.add(&inputHandler::keypressCallback, this);
+        inputHandler::characterEvent.add(&inputHandler::characterCallback, this);
     };
+    bool inputHandler::glfwBound = false;
+    event<GLFWwindow *, int, int, int, int> inputHandler::keypressEvent =
+            event<GLFWwindow *, int, int, int, int>();
+    event<GLFWwindow *, unsigned int> inputHandler::characterEvent =
+            event<GLFWwindow *, unsigned int>();
 
-    void inputHandler::closeWindowCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
-        glfwSetWindowShouldClose(window, true);
+    inputHandler::~inputHandler() {
+        inputHandler::keypressEvent.sub(&inputHandler::keypressCallback, this);
+        inputHandler::characterEvent.sub(&inputHandler::characterCallback, this);
     }
 
-    void inputHandler::processGenericCharacter(unsigned int codepoint) {
-        inputActionEventsHolder::genericCharacterEvent((char) codepoint);
+    void inputHandler::preprocessGenericCharacter(unsigned int codepoint) {
+        char letter = 63; // char("?")
+        if (65 <= codepoint && codepoint <= 90) {
+            letter = (char)codepoint;
+        } else if (97 <= codepoint && codepoint <= 122) {
+            letter = (char)(codepoint - 32);
+        } else if (codepoint == 32) {
+            letter = (char)32;
+        }
+        inputActionHolder.genericCharacterEvent(letter);
     }
+
+    void inputHandler::keypressEventCaller(GLFWwindow *window, int key, int scancode, int action, int mods) {
+        keypressEvent(window, key, scancode, action, mods);
+    }
+
+    void inputHandler::characterEventCaller(GLFWwindow *window, unsigned int codepoint) {
+        characterEvent(window, codepoint);
+    }
+
+    inputActionEventsHolder::inputActionEventsHolder() :
+    move4Axis(),
+    accept(),
+    reload(),
+    genericCharacterEvent(),
+    close()
+    {}
 }
 
 namespace shaders

@@ -82,8 +82,8 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "Debug/vertshader.vert"
-  "Debug/fragshader.frag"
+  "vertshader.vert"
+  "fragshader.frag"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "lib/glfw/src/glfw3Config.cmake"
   "lib/glfw/src/glfw3ConfigVersion.cmake"
