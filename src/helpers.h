@@ -53,7 +53,7 @@ namespace sprites
         
         Text();
 
-        Text(std::string text, int posx = 0, int posy = 0, float height = 0.05);
+        Text(std::string text, float posx = 0, float posy = 0, float height = 0.05);
         void setText(std::string newtext);
         std::string getText();
 

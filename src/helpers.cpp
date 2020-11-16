@@ -189,7 +189,7 @@ namespace sprites
         text = "";
     }
 
-    Text::Text(std::string text, int posx, int posy, float height): text(text)
+    Text::Text(std::string text, float posx, float posy, float height): text(text)
     {
         if (!initflag) throw "Textsystem not initialized!";
 
@@ -212,8 +212,6 @@ namespace sprites
 
     void Text::draw()
     {
-        const char* cars = text.c_str();
-
         float vertices[] = {
         // positions          // colors           // texture coords
         x + h,  y + h, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // top right
@@ -229,8 +227,22 @@ namespace sprites
 
         for (int i = 0; i < text.size(); i++)
         {
+            if(text[i] == '\n' || vertices[0] > 1)
+            {
+                vertices[0] = x + h;
+                vertices[8] = x + h;
+                vertices[16] = x;
+                vertices[24] = x;
+
+                vertices[1] -= h;
+                vertices[9] -= h;
+                vertices[17] -= h;
+                vertices[25] -= h;
+
+                if (text[i] == '\n') continue;
+            }
             glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
-            glBindTexture(GL_TEXTURE_2D, textids[cars[i]]);
+            glBindTexture(GL_TEXTURE_2D, textids[text[i]]);
 
             glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
