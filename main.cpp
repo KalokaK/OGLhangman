@@ -46,6 +46,7 @@ int main(int argc, char* argv[]) {
     sprites::Text::TextInit();
 
     sprites::Text one("HELLO WORLD", -1, 0, 0.18);
+    input::inputHandler inputs;
 
     // main game loop //
     while(!glfwWindowShouldClose(window))

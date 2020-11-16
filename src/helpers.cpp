@@ -224,7 +224,7 @@ namespace sprites
         if (!initflag)
         {
             printf("\nTextsystem not initialized!\n");
-            throw "Textsystem not initialized!";
+            TextInit();
         } 
         x = 0;
         y = 0;
@@ -240,7 +240,7 @@ namespace sprites
         if (!initflag)
         {
             printf("\nTextsystem not initialized!\n");
-            throw "Textsystem not initialized!";
+            TextInit();
         } 
 
         h = height;
