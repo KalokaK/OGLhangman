@@ -45,10 +45,10 @@ int main(int argc, char* argv[]) {
 
     float vertices[] = {
         // positions          // colors           // texture coords
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left 
+         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // top right
+         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // bottom left
+        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
     };
 
     unsigned int indices[] = {  // note that we start from 0!
@@ -79,23 +79,42 @@ unsigned int VBO, VAO, EBO;
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
 
-
-    bool a = true;
-    bool b = true;
-    bool c = true;
-
     sprites::Text::TextInit();
 
-    glBindTexture(GL_TEXTURE_2D, sprites::Text::textids[0]);
+    unsigned int textest;
+    unsigned int texdat[] = {
+        0xffffffff,
+        0xff000000,
+        0xff000000,
+        0xffffffff
+    };
 
-    glUniform1i(glGetUniformLocation(sprites::Text::textids[0], "text"), 0);
+    glGenTextures(1, &textest);
 
+    glBindTexture(GL_TEXTURE_2D, textest);  
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, texdat);
+
+
+
+
+    //glUniform1i(glGetUniformLocation(sprites::Text::textids[0], "text"), 0);
+
+    int c = 0;
+    double t = 0;
     // main game loop //
     while(!glfwWindowShouldClose(window))
     {
+        t = glfwGetTime() + 0.2;
         helpers::render();
-
-
+        c++;
+        c %= 100;
+        glBindTexture(GL_TEXTURE_2D, sprites::Text::textids[c]);
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -103,6 +122,8 @@ unsigned int VBO, VAO, EBO;
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glfwSwapBuffers(window);
         glfwPollEvents();
+
+        while (t > glfwGetTime()) ;
     }
     // //
     return 0;
