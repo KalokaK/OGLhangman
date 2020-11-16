@@ -3,10 +3,7 @@
 #include "helpers.h"
 #include <fstream>
 
-const char* vertshader_loc = "vertshader.vert";
-const char* fragshader_loc = "fragshader.frag";
-
-int main() {
+int main(int argc, char* argv[]) {
 
     // create open gl context //
     glfwInit();
@@ -31,14 +28,14 @@ int main() {
     // //
 
     // shaders //
-    unsigned int vertshader = shaders::load_shader(vertshader_loc, GL_VERTEX_SHADER);
-    unsigned int fragshader = shaders::load_shader(fragshader_loc, GL_FRAGMENT_SHADER);
+    unsigned int shaderprog = shaders::shader_program();
+    glUseProgram(shaderprog);
     // //
 
     printf("\nshader success!\n");
 
     // setup input //
-    input::setupGlfwInputCallbacks(window);
+    input::setupGlfwInputCallbacks(window, input::inputHandler());
     // //
 
     // set viewport rect //
@@ -46,10 +43,16 @@ int main() {
     glfwSetFramebufferSizeCallback(window, helpers::framebufferSizeCallback);
     // //
 
+    sprites::Text::TextInit();
+
+    sprites::Text one("HELLO WORLD", -1, 0, 0.18);
+
     // main game loop //
     while(!glfwWindowShouldClose(window))
     {
         helpers::render();
+        one.draw();
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }

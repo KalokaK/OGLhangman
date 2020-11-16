@@ -21,6 +21,9 @@ target_include_directories(Google_Tests_run PRIVATE src)
 target_link_libraries(${CMAKE_PROJECT_NAME} glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARY})
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${GLFW_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR})
 
+set(WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}/src)
+
+
 # shaders 
 configure_file(src/vertshader.vert Debug/vertshader.vert COPYONLY)
 configure_file(src/fragshader.frag Debug/fragshader.frag COPYONLY)
