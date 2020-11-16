@@ -43,7 +43,9 @@ int main(int argc, char* argv[]) {
     glfwSetFramebufferSizeCallback(window, helpers::framebufferSizeCallback);
     // //
 
-    sprites::Text one("HELLO WORLD", -1, 0, 0.18);
+    sprites::Text::TextInit();
+
+    sprites::Text one("HaLLO WORLD", -1, 0, 0.18);
 
     // main game loop //
     while(!glfwWindowShouldClose(window))

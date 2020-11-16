@@ -134,6 +134,8 @@ namespace sprites
 
     void Text::TextInit()
     {
+        if (initflag) return;
+
         glGenTextures(100, textids);
         for (int i = 0; i < 100; i++)
         {
@@ -179,19 +181,27 @@ namespace sprites
 
     Text::Text()
     {
-        if (!initflag) throw "Textsystem not initialized!";
+        if (!initflag)
+        {
+            printf("\nTextsystem not initialized!\n");
+            throw "Textsystem not initialized!";
+        } 
         x = 0;
         y = 0;
 
-        w = text.size() * CALIBRI_FRAME_WIDTH;
-        h = CALIBRI_FRAME_HEIGHT;
+        h = 0.05;
+        w = text.size() * h;
 
         text = "";
     }
 
     Text::Text(std::string text, float posx, float posy, float height): text(text)
     {
-        if (!initflag) throw "Textsystem not initialized!";
+        if (!initflag)
+        {
+            printf("\nTextsystem not initialized!\n");
+            throw "Textsystem not initialized!";
+        } 
 
         h = height;
         x = posx;
