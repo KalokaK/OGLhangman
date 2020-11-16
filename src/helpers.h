@@ -152,6 +152,7 @@ namespace events {
     functionWrapperBase<T...> *handler(void (U::*func)(T...), U *inst) {
         return new functionWrapperMember<U, T...>(func, inst);
     }
+    template <typename ...T>
     functionWrapperBase<void> *handler(void (*func)()) {
         return new functionWrapperFunc<void>(func);
     }
