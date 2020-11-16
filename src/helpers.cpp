@@ -30,6 +30,11 @@ namespace input {
         // //
     }
 
+        event<void> inputActionEventsHolder::accept;
+        event<float, float> inputActionEventsHolder::move4Axis;
+        event<void> inputActionEventsHolder::reload;
+        event<char>  inputActionEventsHolder::genericCharacterEvent;
+
     void inputHandler::keypressCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
         switch (key) {
             case GLFW_KEY_UP:

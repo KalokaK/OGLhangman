@@ -8,6 +8,7 @@
 #include <GLFW/glfw3.h>
 #include <string>
 #include <vector>
+#include <typeinfo>
 
 namespace helpers {
     void framebufferSizeCallback(GLFWwindow *glfwWindow, int width, int height);
