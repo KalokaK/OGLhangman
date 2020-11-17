@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
 
     sprites::Text::TextInit();
 
-    sprites::Text one("HELLO WORLD", -1, 0, 0.18);
+    sprites::Text one("Hello_World", -1, 0, 0.09);
     input::inputHandler inputs;
 
 
