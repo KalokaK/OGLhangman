@@ -26,7 +26,9 @@ namespace input {
         event<void> reload;
         event<char> genericCharacterEvent;
         event<void> close;
+        event<void> back;
     };
+
     struct inputHandler {
     public:
         inputActionEventsHolder inputActionHolder;

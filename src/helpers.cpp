@@ -49,6 +49,9 @@ namespace input {
             case GLFW_KEY_END:
                 inputActionHolder.close();
                 break;
+            case GLFW_KEY_BACKSPACE:
+            if (action == GLFW_RELEASE) inputActionHolder.back();
+                break;
             default:
                 ;
         }

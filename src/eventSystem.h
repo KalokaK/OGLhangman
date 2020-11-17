@@ -6,5 +6,5 @@
 #define OGLHANGMAN_EVENTSYSTEM_H
 
 #define EVENTS_DEFINED_T
-#include "eventSystem.t"
+#include "eventSystem.cxx"
 #endif //OGLHANGMAN_EVENTSYSTEM_H

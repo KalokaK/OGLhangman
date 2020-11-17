@@ -5,9 +5,11 @@ layout (location = 2) in vec2 aTex;
 
 out vec3 VertexColor;
 out vec2 TexCoord;
+out vec3 pos;
 
 void main()
 {
+	pos = aPos;
 	gl_Position = vec4(aPos, 1.0);
 	VertexColor = aCol;
 	TexCoord = aTex;
