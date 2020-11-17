@@ -5,6 +5,7 @@
 #include <glad/glad.h>
 #include "helpers.h"
 #include <fstream>
+#include <time.h>
 #include "calibri.c"
 #include "functional"
 
@@ -16,6 +17,26 @@ namespace helpers {
     void render() {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+    }
+    
+    std::string get_word()
+    {
+        // reads a random word out of nouns.txt and returns it
+        std::ifstream nouns("nouns.txt");
+
+        std::string result;
+        int lim;
+
+        lim = rand() % 4554;
+
+        while (lim--> 0)
+        {
+                nouns >> result;
+        }
+
+        nouns.close();
+
+        return result;
     }
 }
 
