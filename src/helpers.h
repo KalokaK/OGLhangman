@@ -15,6 +15,7 @@
 namespace helpers {
     void framebufferSizeCallback(GLFWwindow *glfwWindow, int width, int height);
     void render();
+    std::string get_word();
 }
 
 using events::event;
@@ -26,7 +27,9 @@ namespace input {
         event<void> reload;
         event<char> genericCharacterEvent;
         event<void> close;
+        event<void> back;
     };
+
     struct inputHandler {
     public:
         inputActionEventsHolder inputActionHolder;
