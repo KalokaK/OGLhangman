@@ -8,12 +8,17 @@ CMakeFiles/OGLhangman.dir/src/glad.c.o: ../src/glad.c
 CMakeFiles/OGLhangman.dir/main.cpp.o: ../include/GLFW/glfw3.h
 CMakeFiles/OGLhangman.dir/main.cpp.o: ../include/KHR/khrplatform.h
 CMakeFiles/OGLhangman.dir/main.cpp.o: ../include/glad/glad.h
+CMakeFiles/OGLhangman.dir/main.cpp.o: ../src/eventSystem.h
+CMakeFiles/OGLhangman.dir/main.cpp.o: ../src/eventSystem.t
 CMakeFiles/OGLhangman.dir/main.cpp.o: ../src/helpers.h
 CMakeFiles/OGLhangman.dir/main.cpp.o: ../main.cpp
 
 CMakeFiles/OGLhangman.dir/src/helpers.cpp.o: ../include/GLFW/glfw3.h
 CMakeFiles/OGLhangman.dir/src/helpers.cpp.o: ../include/KHR/khrplatform.h
 CMakeFiles/OGLhangman.dir/src/helpers.cpp.o: ../include/glad/glad.h
+CMakeFiles/OGLhangman.dir/src/helpers.cpp.o: ../src/eventSystem.h
+CMakeFiles/OGLhangman.dir/src/helpers.cpp.o: ../src/eventSystem.t
+CMakeFiles/OGLhangman.dir/src/helpers.cpp.o: ../src/calibri.c
 CMakeFiles/OGLhangman.dir/src/helpers.cpp.o: ../src/helpers.cpp
 CMakeFiles/OGLhangman.dir/src/helpers.cpp.o: ../src/helpers.h
 

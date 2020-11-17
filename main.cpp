@@ -35,7 +35,8 @@ int main(int argc, char* argv[]) {
     printf("\nshader success!\n");
 
     // setup input //
-    input::setupGlfwInputCallbacks(window, input::inputHandler());
+    auto handler = input::inputHandler();
+    input::setupGlfwInputCallbacks(window, &handler);
     // //
 
     // set viewport rect //
@@ -47,6 +48,7 @@ int main(int argc, char* argv[]) {
 
     sprites::Text one("Hello_World", -1, 0, 0.09);
     input::inputHandler inputs;
+
 
     // main game loop //
     while(!glfwWindowShouldClose(window))
