@@ -10,7 +10,7 @@
 
 using std::string;
 namespace textures {
-    unsigned int loadTextureToBuffer(const string &pngSpriteFileLocation);
+    unsigned int loadTextureToBuffer(const string &pngSpriteFileLocation, int iX, int iY);
 }
 
 

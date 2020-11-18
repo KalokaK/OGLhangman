@@ -24,7 +24,6 @@ private:
     void onEnable();
     void onDisable();
     void generateVertexBuffer();
-    void generateTexture(const string &pngSpriteFileLocation, float posX, float posY);
 public:
     float scale;
     explicit sprite(GLuint glTexture, float xPos, float yPos, float hVal, float wVal);

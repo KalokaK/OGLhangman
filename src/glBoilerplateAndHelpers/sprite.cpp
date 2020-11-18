@@ -52,10 +52,10 @@ void sprite::setEnabled(bool val) {
 void sprite::generateVertexBuffer() {
     float vertices[] = {
             // positions          // colors           // texture coords
-            x+w,  y+h, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
-            x+w, y, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
-            x, y, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
-            x,  y+h, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left
+            x+w,  y+h, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f, // top right
+            x+w, y, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // bottom right
+            x, y, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f, // bottom left
+            x,  y+h, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f  // top left
     };
     unsigned int indices[] = {
             0, 1, 3, // first triangle
