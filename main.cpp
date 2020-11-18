@@ -109,6 +109,10 @@ int main(int argc, char* argv[]) {
     glUseProgram(shaderprog);
     // //
 
+    
+    glEnable(GL_BLEND); 
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
+
     printf("\nshader success!\n");
 
     // setup input //
@@ -138,10 +142,10 @@ int main(int argc, char* argv[]) {
     sprites::Text reveal("word: " + word, -1, -.3, .1);
     sprites::Text next("start a new round by pressing backspace", -1, -.4, 0.051282);
     sprites::Text misses("miss:" + fails, -1, -.9, .07);
-    unsigned int hangmanBuffer = textures::loadTextureToBuffer(std::string("hangman/0.png"), 0, 0);
-    sprite hangman(hangmanBuffer, 0, 0, .5, .5);
 
-    glEnable(GL_BLEND);
+    unsigned int hangmanBuffer = textures::loadTextureToBuffer(std::string("hangman/4.png"), 0, 0);
+    sprite hangman(hangmanBuffer, -.75, -.7, 1.4, 1.4);
+
     // main game loop //
     while(!glfwWindowShouldClose(window))
     {
