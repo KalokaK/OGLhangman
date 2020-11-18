@@ -17,6 +17,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../lib/glfw/CMakeLists.txt"
   "../lib/glfw/src/CMakeLists.txt"
   "../lib/glfw/src/glfw_config.h.in"
+  "../nouns.txt"
   "../src/fragshader.frag"
   "../src/vertshader.vert"
   "../test/Google_tests/CMakeLists.txt"
@@ -82,8 +83,9 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "vertshader.vert"
-  "fragshader.frag"
+  "Debug/vertshader.vert"
+  "Debug/fragshader.frag"
+  "Debug/nouns.txt"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "lib/glfw/src/glfw3Config.cmake"
   "lib/glfw/src/glfw3ConfigVersion.cmake"

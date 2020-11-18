@@ -13,7 +13,9 @@ include_directories(src)
 set(SOURCE_FILES
         main.cpp
         src/glad.c
-        src/helpers.cpp)
+        src/helpers.cpp
+        src/glBoilerplateAndHelpers/sprite.cpp
+        src/glBoilerplateAndHelpers/sprite.h src/glBoilerplateAndHelpers/texture.cpp src/glBoilerplateAndHelpers/texture.h)
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
 
 target_include_directories(Google_Tests_run PRIVATE src)

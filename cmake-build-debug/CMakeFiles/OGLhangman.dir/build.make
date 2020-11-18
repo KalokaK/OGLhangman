@@ -115,11 +115,39 @@ CMakeFiles/OGLhangman.dir/src/helpers.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OGLhangman.dir/src/helpers.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kaloka/CLionProjects/OGLhangman/src/helpers.cpp -o CMakeFiles/OGLhangman.dir/src/helpers.cpp.s
 
+CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.o: CMakeFiles/OGLhangman.dir/flags.make
+CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.o: ../src/glBoilerplateAndHelpers/sprite.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.o -c /home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/sprite.cpp
+
+CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/sprite.cpp > CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.i
+
+CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/sprite.cpp -o CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.s
+
+CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.o: CMakeFiles/OGLhangman.dir/flags.make
+CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.o: ../src/glBoilerplateAndHelpers/texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.o -c /home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/texture.cpp
+
+CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/texture.cpp > CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.i
+
+CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/texture.cpp -o CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.s
+
 # Object files for target OGLhangman
 OGLhangman_OBJECTS = \
 "CMakeFiles/OGLhangman.dir/main.cpp.o" \
 "CMakeFiles/OGLhangman.dir/src/glad.c.o" \
-"CMakeFiles/OGLhangman.dir/src/helpers.cpp.o"
+"CMakeFiles/OGLhangman.dir/src/helpers.cpp.o" \
+"CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.o" \
+"CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.o"
 
 # External object files for target OGLhangman
 OGLhangman_EXTERNAL_OBJECTS =
@@ -127,6 +155,8 @@ OGLhangman_EXTERNAL_OBJECTS =
 OGLhangman: CMakeFiles/OGLhangman.dir/main.cpp.o
 OGLhangman: CMakeFiles/OGLhangman.dir/src/glad.c.o
 OGLhangman: CMakeFiles/OGLhangman.dir/src/helpers.cpp.o
+OGLhangman: CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.o
+OGLhangman: CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.o
 OGLhangman: CMakeFiles/OGLhangman.dir/build.make
 OGLhangman: lib/glfw/src/libglfw3.a
 OGLhangman: /usr/lib/libOpenGL.so
@@ -135,7 +165,7 @@ OGLhangman: /usr/lib/libGLU.so
 OGLhangman: /usr/lib/librt.so
 OGLhangman: /usr/lib/libm.so
 OGLhangman: CMakeFiles/OGLhangman.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable OGLhangman"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable OGLhangman"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OGLhangman.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -540,6 +540,18 @@
 		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/main.cpp">
 			<Option target="OGLhangman"/>
 		</Unit>
+		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/sprite.cpp">
+			<Option target="OGLhangman"/>
+		</Unit>
+		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/sprite.h">
+			<Option target="OGLhangman"/>
+		</Unit>
+		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/texture.cpp">
+			<Option target="OGLhangman"/>
+		</Unit>
+		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/texture.h">
+			<Option target="OGLhangman"/>
+		</Unit>
 		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/src/glad.c">
 			<Option target="OGLhangman"/>
 		</Unit>
@@ -565,6 +577,9 @@
 			<Option target="Google_Tests_run"/>
 		</Unit>
 		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/nouns.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 		<Unit filename="/home/kaloka/CLionProjects/OGLhangman/lib/glfw/CMakeLists.txt">

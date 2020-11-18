@@ -306,6 +306,60 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/glBoilerplateAndHelpers/sprite.o: src/glBoilerplateAndHelpers/sprite.cpp.o
+
+.PHONY : src/glBoilerplateAndHelpers/sprite.o
+
+# target to build an object file
+src/glBoilerplateAndHelpers/sprite.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.o
+.PHONY : src/glBoilerplateAndHelpers/sprite.cpp.o
+
+src/glBoilerplateAndHelpers/sprite.i: src/glBoilerplateAndHelpers/sprite.cpp.i
+
+.PHONY : src/glBoilerplateAndHelpers/sprite.i
+
+# target to preprocess a source file
+src/glBoilerplateAndHelpers/sprite.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.i
+.PHONY : src/glBoilerplateAndHelpers/sprite.cpp.i
+
+src/glBoilerplateAndHelpers/sprite.s: src/glBoilerplateAndHelpers/sprite.cpp.s
+
+.PHONY : src/glBoilerplateAndHelpers/sprite.s
+
+# target to generate assembly for a file
+src/glBoilerplateAndHelpers/sprite.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.s
+.PHONY : src/glBoilerplateAndHelpers/sprite.cpp.s
+
+src/glBoilerplateAndHelpers/texture.o: src/glBoilerplateAndHelpers/texture.cpp.o
+
+.PHONY : src/glBoilerplateAndHelpers/texture.o
+
+# target to build an object file
+src/glBoilerplateAndHelpers/texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.o
+.PHONY : src/glBoilerplateAndHelpers/texture.cpp.o
+
+src/glBoilerplateAndHelpers/texture.i: src/glBoilerplateAndHelpers/texture.cpp.i
+
+.PHONY : src/glBoilerplateAndHelpers/texture.i
+
+# target to preprocess a source file
+src/glBoilerplateAndHelpers/texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.i
+.PHONY : src/glBoilerplateAndHelpers/texture.cpp.i
+
+src/glBoilerplateAndHelpers/texture.s: src/glBoilerplateAndHelpers/texture.cpp.s
+
+.PHONY : src/glBoilerplateAndHelpers/texture.s
+
+# target to generate assembly for a file
+src/glBoilerplateAndHelpers/texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OGLhangman.dir/build.make CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.s
+.PHONY : src/glBoilerplateAndHelpers/texture.cpp.s
+
 src/glad.o: src/glad.c.o
 
 .PHONY : src/glad.o
@@ -383,6 +437,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/glBoilerplateAndHelpers/sprite.o"
+	@echo "... src/glBoilerplateAndHelpers/sprite.i"
+	@echo "... src/glBoilerplateAndHelpers/sprite.s"
+	@echo "... src/glBoilerplateAndHelpers/texture.o"
+	@echo "... src/glBoilerplateAndHelpers/texture.i"
+	@echo "... src/glBoilerplateAndHelpers/texture.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"

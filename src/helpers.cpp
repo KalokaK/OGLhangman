@@ -306,7 +306,7 @@ namespace sprites
         return text;
     }
 
-    void Text::draw()
+    void Text::draw(unsigned int shader)
     {
         float vertices[] = {
         // positions          // colors           // texture coords
