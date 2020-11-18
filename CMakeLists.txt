@@ -26,6 +26,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${GLFW_INCLUDE_DIRS} ${
 
 set(WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}/src)
 
+file(COPY hangman DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 # shaders 
 configure_file(src/vertshader.vert Debug/vertshader.vert COPYONLY)

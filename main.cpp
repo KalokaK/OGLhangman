@@ -3,6 +3,8 @@
 #include "helpers.h"
 #include <iostream>
 #include <time.h>
+#include <glBoilerplateAndHelpers/sprite.h>
+#include "glBoilerplateAndHelpers/texture.h"
 
 std::string guess;
 std::string word;
@@ -136,9 +138,10 @@ int main(int argc, char* argv[]) {
     sprites::Text reveal("word: " + word, -1, -.3, .1);
     sprites::Text next("start a new round by pressing backspace", -1, -.4, 0.051282);
     sprites::Text misses("miss:" + fails, -1, -.9, .07);
+    unsigned int hangmanBuffer = textures::loadTextureToBuffer(std::string("hangman/0.png"), 0, 0);
+    sprite hangman(hangmanBuffer, 0, 0, .5, .5);
 
-    
-
+    glEnable(GL_BLEND);
     // main game loop //
     while(!glfwWindowShouldClose(window))
     {
@@ -152,6 +155,7 @@ int main(int argc, char* argv[]) {
         g.draw(0);
         health.draw(0);
         misses.draw(0);
+        hangman.draw(shaderprog);
 
         if (lives <= 0)
         {
