@@ -17,6 +17,8 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kaloka/CLionProjects/OGLhangman/main.cpp" "/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles/OGLhangman.dir/main.cpp.o"
+  "/home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/sprite.cpp" "/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/sprite.cpp.o"
+  "/home/kaloka/CLionProjects/OGLhangman/src/glBoilerplateAndHelpers/texture.cpp" "/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles/OGLhangman.dir/src/glBoilerplateAndHelpers/texture.cpp.o"
   "/home/kaloka/CLionProjects/OGLhangman/src/helpers.cpp" "/home/kaloka/CLionProjects/OGLhangman/cmake-build-debug/CMakeFiles/OGLhangman.dir/src/helpers.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

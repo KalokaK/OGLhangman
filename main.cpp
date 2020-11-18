@@ -148,22 +148,22 @@ int main(int argc, char* argv[]) {
         health.setText("lives: " + std::to_string(lives));
         misses.setText("miss:" + fails);
 
-        text.draw();
-        g.draw();
-        health.draw();
-        misses.draw();
+        text.draw(0);
+        g.draw(0);
+        health.draw(0);
+        misses.draw(0);
 
         if (lives <= 0)
         {
-            gameOver.draw();
-            reveal.draw();
-            next.draw();
+            gameOver.draw(0);
+            reveal.draw(0);
+            next.draw(0);
         } 
 
         if (win)
         {
-            congrats.draw();
-            next.draw();
+            congrats.draw(0);
+            next.draw(0);
         }
 
         glfwSwapBuffers(window);

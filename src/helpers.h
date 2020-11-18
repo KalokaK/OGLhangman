@@ -70,7 +70,7 @@ namespace sprites
         float w;
         float h;
 
-        virtual void draw() = 0;
+        virtual void draw(unsigned int shader) = 0;
     };
 
     class Text: public Sprite
@@ -90,7 +90,7 @@ namespace sprites
         void setText(std::string newtext);
         std::string getText();
 
-        void draw();
+        void draw(unsigned int shader);
 
     private:
         std::string text = "";
