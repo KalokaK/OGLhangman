@@ -12,9 +12,20 @@ std::string fails;
 char last;
 int lives = 8;
 bool win = false;
-
-void init()
-{
+class hangman {
+public:
+    sprite spriteT;
+    hangman(GLuint glTexture, float xPos, float yPos, float hVal, float wVal) :
+    spriteT(glTexture, xPos, yPos, hVal, wVal) {};
+    void changeHangmanTexture(GLuint i) {
+        spriteT.setTexture(
+            textures::loadTextureToBuffer(
+                    std::string("hangman/") + std::to_string(8-i) + ".png", 0, 0)
+        );
+    }
+};
+event<unsigned int> liveLost = event<unsigned int>();
+void init() {
     word = helpers::get_word();
 
     std::cout << word << " " << word.size()<< std::endl;
@@ -30,35 +41,29 @@ void init()
     fails.clear();
 }
 
-void save_last(char c)
-{
+void save_last(char c) {
     std::cout << c;
     last = c;
 }
 
-void confirm()
-{
+void confirm() {
     char c = last;
 
     if (c == ' ' || lives <= 0 || win) return;
 
     bool gotem = false;
-    for (int i = 0; i < word.size(); i++)
-    {
-        if (word[i] == c || abs(word[i] - c) == 32)
-        { 
+    for (int i = 0; i < word.size(); i++) {
+        if (word[i] == c || abs(word[i] - c) == 32) {
             guess[i] = c;
             gotem = true;
         }
     }
-
     lives += gotem - 1;
+    if (!gotem) liveLost(lives);
 
-    if (gotem)
-    {
+    if (gotem) {
         win = true;
-        for (int i = 0; i < word.size(); i++)
-        {
+        for (int i = 0; i < word.size(); i++) {
             win = win && (guess[i] != '_');
         }
     }
@@ -109,9 +114,9 @@ int main(int argc, char* argv[]) {
     glUseProgram(shaderprog);
     // //
 
-    
-    glEnable(GL_BLEND); 
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     printf("\nshader success!\n");
 
@@ -142,10 +147,11 @@ int main(int argc, char* argv[]) {
     sprites::Text reveal("word: " + word, -1, -.3, .1);
     sprites::Text next("start a new round by pressing backspace", -1, -.4, 0.051282);
     sprites::Text misses("miss:" + fails, -1, -.9, .07);
+    unsigned int hangmanBuffer = textures::loadTextureToBuffer(std::string("hangman/0.png"), 0, 0);
+    hangman hangman(hangmanBuffer, -.75, -.7, 1.4, 1.4);
+    liveLost.add(&hangman::changeHangmanTexture, &hangman);
 
-    unsigned int hangmanBuffer = textures::loadTextureToBuffer(std::string("hangman/4.png"), 0, 0);
-    sprite hangman(hangmanBuffer, -.75, -.7, 1.4, 1.4);
-
+    glEnable(GL_BLEND);
     // main game loop //
     while(!glfwWindowShouldClose(window))
     {
@@ -159,7 +165,7 @@ int main(int argc, char* argv[]) {
         g.draw(0);
         health.draw(0);
         misses.draw(0);
-        hangman.draw(shaderprog);
+        hangman.spriteT.draw(shaderprog);
 
         if (lives <= 0)
         {
