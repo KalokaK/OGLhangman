@@ -2,6 +2,7 @@
 // Created by kaloka on 18/11/2020.
 //
 
+#define STB_IMAGE_IMPLEMENTATION
 #include "texture.h"
 
 unsigned int textures::loadTextureToBuffer(const string &pngSpriteFileLocation) {
