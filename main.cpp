@@ -163,6 +163,7 @@ int main(int argc, char* argv[]) {
 
         if (lives <= 0)
         {
+            reveal.setText("word: " + word);
             gameOver.draw(0);
             reveal.draw(0);
             next.draw(0);
