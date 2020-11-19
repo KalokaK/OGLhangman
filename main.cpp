@@ -39,6 +39,7 @@ void init() {
     win = false;
     last = ' ';
     fails.clear();
+    liveLost(lives);
 }
 
 void save_last(char c) {
